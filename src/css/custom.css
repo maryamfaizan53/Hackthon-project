@@ -93,7 +93,7 @@ body {
   }
 }
 
-/* Professional Neon Headings */
+/* Professional Neon Headings - Subtle Glow */
 .theme-doc-markdown h1,
 .theme-doc-markdown h2,
 .theme-doc-markdown h3,
@@ -104,11 +104,9 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--neon-blue) !important;
   font-weight: 800 !important;
   text-shadow: 
-    0 0 10px var(--neon-blue-glow),
-    0 0 20px var(--neon-blue-glow),
-    0 0 30px var(--neon-blue);
+    0 0 5px rgba(0, 217, 255, 0.4),
+    0 0 10px rgba(0, 217, 255, 0.2);
   letter-spacing: 0.05em;
-  animation: neonGlow 3s ease-in-out infinite;
   position: relative;
 }
 
