@@ -110,6 +110,15 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
+/* Enhanced glow for main headings (h1) */
+.theme-doc-markdown h1,
+h1 {
+  text-shadow: 
+    0 0 8px rgba(0, 217, 255, 0.5),
+    0 0 15px rgba(0, 217, 255, 0.3),
+    0 0 25px rgba(0, 217, 255, 0.15);
+}
+
 /* Neon Underline Effect for H1 */
 h1::after,
 .theme-doc-markdown h1::after {
