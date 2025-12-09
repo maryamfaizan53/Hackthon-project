@@ -85,7 +85,8 @@ def check_db_health() -> Dict[str, Any]:
                 WHERE table_name = 'users'
             )
         """)
-        table_exists = cursor.fetchone()[0]
+        result = cursor.fetchone()
+        table_exists = result['exists'] if result else False
         health_status["tables_exist"] = table_exists
         
         cursor.close()
