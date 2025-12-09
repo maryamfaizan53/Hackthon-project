@@ -26,8 +26,13 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     from app.database.db import init_db
-    init_db()
-    print("Database initialized successfully!")
+    try:
+        init_db()
+        print("✅ Database initialized successfully!")
+    except Exception as e:
+        print(f"⚠️ Database initialization failed: {e}")
+        print("ℹ️ Chatbot will work, but authentication requires a valid database connection.")
+        print("ℹ️ Update DATABASE_URL in backend/.env to enable authentication.")
 
 # ===== ROUTES =====
 @app.get("/")
