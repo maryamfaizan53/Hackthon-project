@@ -39,7 +39,7 @@ export default {
     }
   ],
   "url": "https://full-project-kappa.vercel.app",
-  "baseUrl": "/ur/",
+  "baseUrl": "/",
   "organizationName": "samade747",
   "projectName": "full-project",
   "onBrokenLinks": "warn",
@@ -53,10 +53,10 @@ export default {
     "localeConfigs": {}
   },
   "clientModules": [
-    "D:\\github\\full-project\\src\\components\\Root.tsx"
+    "D:\\github\\Hackthon-project\\src\\components\\Root.tsx"
   ],
   "customFields": {
-    "geminiApiKey": "AIzaSyBppTVB6o9AI7buzuOCg0Rqzbb7gr6ioAA",
+    "geminiApiKey": "AIzaSyB-Y-eM-hDHw4_jbG9QEpVMs6drXpxgM7c",
     "backendApiUrl": "http://localhost:8000"
   },
   "presets": [
@@ -70,8 +70,8 @@ export default {
         "blog": false,
         "theme": {
           "customCss": [
-            "D:\\github\\full-project\\src\\css\\custom.css",
-            "D:\\github\\full-project\\src\\css\\sidebar-custom.css"
+            "D:\\github\\Hackthon-project\\src\\css\\custom.css",
+            "D:\\github\\Hackthon-project\\src\\css\\sidebar-custom.css"
           ]
         }
       }
