@@ -62,7 +62,7 @@
 
 /* Pulsing Robot Logo in Header */
 .chatkit-header span::before {
-  content: '🤖';
+  content: '⚡';
   font-size: 28px;
   display: inline-block;
   animation: logoPulse 2s ease-in-out infinite;
