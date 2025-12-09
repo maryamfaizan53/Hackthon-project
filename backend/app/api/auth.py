@@ -70,30 +70,44 @@ async def signup_user(signup_data: SignupData):
 
 @router.post("/login", response_model=AuthResponse)  # Response model change karo
 async def login_user(login_data: LoginData):
-    user = get_user_by_email(login_data.email)
-    if not user or not verify_password(login_data.password, user.hashed_password):
+    print(f"Login attempt for email: {login_data.email}")
+    try:
+        user = get_user_by_email(login_data.email)
+        if not user or not verify_password(login_data.password, user.hashed_password):
+            print(f"Login failed: Invalid credentials for {login_data.email}")
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Incorrect email or password",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        
+        access_token_expires = timedelta(days=ACCESS_TOKEN_EXPIRE_DAYS)
+        access_token = create_access_token(
+            data={"sub": user.email}, expires_delta=access_token_expires
+        )
+        
+        print(f"Login successful for {login_data.email}")
+        # Return proper AuthResponse format
+        return AuthResponse(
+            message="Login successful",
+            token=access_token,
+            user=User(
+                userId=user.userId,
+                email=user.email,
+                name=user.name,
+                preferences=user.preferences
+            )
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"CRITICAL ERROR during login for {login_data.email}: {e}")
+        import traceback
+        traceback.print_exc()
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password",
-            headers={"WWW-Authenticate": "Bearer"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Login failed due to server error: {str(e)}"
         )
-    
-    access_token_expires = timedelta(days=ACCESS_TOKEN_EXPIRE_DAYS)
-    access_token = create_access_token(
-        data={"sub": user.email}, expires_delta=access_token_expires
-    )
-    
-    # Return proper AuthResponse format
-    return AuthResponse(
-        message="Login successful",
-        token=access_token,
-        user=User(
-            userId=user.userId,
-            email=user.email,
-            name=user.name,
-            preferences=user.preferences
-        )
-    )
 
 @router.get("/me", response_model=User)
 async def read_users_me(current_user: User = Depends(get_current_user)):
