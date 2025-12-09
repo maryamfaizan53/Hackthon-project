@@ -3,19 +3,13 @@ import axios from 'axios';
 import { SignupData, LoginData, User, AuthSuccessResponse, ErrorResponse } from '../types/user';
 
 // Get backend URL from window config or use default
-// Get backend URL from window config or use default
 const getApiUrl = () => {
   // Server-side rendering fallback
   if (typeof window === 'undefined') return 'http://localhost:8000';
 
-  // Check for runtime config
+  // Check for runtime config (set by Vercel or custom script)
   if ((window as any).BACKEND_API_URL) {
     return (window as any).BACKEND_API_URL;
-  }
-
-  // Automatic production detection
-  if (window.location.hostname.includes('vercel.app')) {
-    return 'https://hackthon-project-production.up.railway.app';
   }
 
   // Fallback to localhost for development
