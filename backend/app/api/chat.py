@@ -43,8 +43,8 @@ class GeminiProvider(AIProvider):
     def __init__(self):
         super().__init__("Gemini")
         self.api_key = os.getenv("GEMINI_API_KEY")
-        # Use models/gemini-pro for better compatibility
-        self.model_name = os.getenv("GEMINI_MODEL", "models/gemini-pro")
+        # Use gemini-pro (SDK adds 'models/' prefix automatically)
+        self.model_name = os.getenv("GEMINI_MODEL", "gemini-pro")
         
         if self.is_configured():
             genai.configure(api_key=self.api_key)
