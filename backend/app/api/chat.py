@@ -43,8 +43,8 @@ class GeminiProvider(AIProvider):
     def __init__(self):
         super().__init__("Gemini")
         self.api_key = os.getenv("GEMINI_API_KEY")
-        # Use gemini-pro (SDK adds 'models/' prefix automatically)
-        self.model_name = os.getenv("GEMINI_MODEL", "gemini-pro")
+        # Try gemini-1.5-flash first (newer), fallback to gemini-pro
+        self.model_name = os.getenv("GEMINI_MODEL", os.getenv("MODEL_NAME", "gemini-1.5-flash"))
         
         if self.is_configured():
             genai.configure(api_key=self.api_key)
@@ -153,18 +153,18 @@ class OpenRouterProvider(AIProvider):
 
 
 # ========================================
-# GROK PROVIDER (Fallback 3)
+# GROQ PROVIDER (Fallback 3) - Fast, Free Inference
 # ========================================
 
-class GrokProvider(AIProvider):
+class GroqProvider(AIProvider):
     def __init__(self):
-        super().__init__("Grok")
-        self.api_key = os.getenv("GROK_API_KEY")
-        self.model_name = os.getenv("GROK_MODEL", "grok-beta")
-        self.api_url = "https://api.x.ai/v1/chat/completions"
+        super().__init__("Groq")
+        self.api_key = os.getenv("GROQ_API_KEY")  # Changed from GROK to GROQ
+        self.model_name = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")  # Free, fast model
+        self.api_url = "https://api.groq.com/openai/v1/chat/completions"
     
     def is_configured(self) -> bool:
-        return bool(self.api_key and self.api_key != "your-grok-api-key-here")
+        return bool(self.api_key and self.api_key != "your-groq-api-key-here")
     
     def generate(self, prompt: str) -> str:
         try:
@@ -211,7 +211,7 @@ class ChatbotFallbackManager:
             GeminiProvider(),
             OpenAIProvider(),
             OpenRouterProvider(),
-            GrokProvider()
+            GroqProvider()  # Changed from GrokProvider
         ]
     
     def generate_response(self, prompt: str) -> Dict[str, Any]:
