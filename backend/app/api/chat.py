@@ -285,14 +285,14 @@ class ChatbotFallbackManager:
     """Manages fallback between multiple AI providers"""
     
     def __init__(self):
-        # Initialize providers in priority order (free first, then paid)
+        # Initialize providers in priority order (OpenRouter first per user request)
         self.providers: List[AIProvider] = [
+            OpenRouterProvider(),    # FREE - Try first (user preference)
             GeminiProvider(),        # FREE - Google's fast model
             GroqProvider(),          # FREE - Extremely fast inference
             CohereProvider(),        # FREE - Good for general tasks
-            OpenRouterProvider(),    # FREE models available
             AnthropicProvider(),     # Paid - Strong reasoning
-            OpenAIProvider(),        # Paid - Fallback
+            OpenAIProvider(),        # Paid - Last resort
         ]
     
     def generate_response(self, prompt: str) -> Dict[str, Any]:
