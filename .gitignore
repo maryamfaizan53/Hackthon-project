@@ -20,6 +20,8 @@ pnpm-lock.yaml
 
 # Environment
 .env*
+.env
+.ENV_FIX_GUIDE.md
 
 # IDE/OS
 Thumbs.db

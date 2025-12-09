@@ -199,6 +199,85 @@ class GroqProvider(AIProvider):
 
 
 # ========================================
+# ANTHROPIC CLAUDE PROVIDER (Fallback 4) - Strong reasoning
+# ========================================
+
+class AnthropicProvider(AIProvider):
+    def __init__(self):
+        super().__init__("Anthropic")
+        self.api_key = os.getenv("ANTHROPIC_API_KEY")
+        self.model_name = os.getenv("ANTHROPIC_MODEL", "claude-3-haiku-20240307")  # Fastest, cheapest
+    
+    def is_configured(self) -> bool:
+        return bool(self.api_key and self.api_key != "your-anthropic-api-key-here")
+    
+    def generate(self, prompt: str) -> str:
+        try:
+            from anthropic import Anthropic
+            client = Anthropic(api_key=self.api_key)
+            
+            message = client.messages.create(
+                model=self.model_name,
+                max_tokens=1000,
+                messages=[
+                    {"role": "user", "content": prompt}
+                ]
+            )
+            return message.content[0].text
+        except Exception as e:
+            error_msg = str(e).lower()
+            if "credit" in error_msg or "quota" in error_msg:
+                raise Exception(f"Credit/quota exceeded: {e}")
+            elif "api_key" in error_msg or "authentication" in error_msg:
+                raise Exception(f"Authentication failed: {e}")
+            else:
+                raise Exception(f"Generation failed: {e}")
+
+
+# ========================================
+# COHERE PROVIDER (Fallback 5) - Free tier available
+# ========================================
+
+class CohereProvider(AIProvider):
+    def __init__(self):
+        super().__init__("Cohere")
+        self.api_key = os.getenv("COHERE_API_KEY")
+        self.model_name = os.getenv("COHERE_MODEL", "command-r")  # Free tier model
+        self.api_url = "https://api.cohere.ai/v1/chat"
+    
+    def is_configured(self) -> bool:
+        return bool(self.api_key and self.api_key != "your-cohere-api-key-here")
+    
+    def generate(self, prompt: str) -> str:
+        try:
+            headers = {
+                "Authorization": f"Bearer {self.api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            data = {
+                "model": self.model_name,
+                "message": prompt,
+                "temperature": 0.7
+            }
+            
+            response = requests.post(self.api_url, headers=headers, json=data, timeout=30)
+            response.raise_for_status()
+            
+            result = response.json()
+            return result["text"]
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 429:
+                raise Exception(f"Rate limit exceeded: {e}")
+            elif e.response.status_code in [401, 403]:
+                raise Exception(f"Authentication failed: {e}")
+            else:
+                raise Exception(f"HTTP error {e.response.status_code}: {e}")
+        except Exception as e:
+            raise Exception(f"Request failed: {e}")
+
+
+# ========================================
 # CHATBOT FALLBACK MANAGER
 # ========================================
 
@@ -206,12 +285,14 @@ class ChatbotFallbackManager:
     """Manages fallback between multiple AI providers"""
     
     def __init__(self):
-        # Initialize providers in priority order
+        # Initialize providers in priority order (free first, then paid)
         self.providers: List[AIProvider] = [
-            GeminiProvider(),
-            OpenAIProvider(),
-            OpenRouterProvider(),
-            GroqProvider()  # Changed from GrokProvider
+            GeminiProvider(),        # FREE - Google's fast model
+            GroqProvider(),          # FREE - Extremely fast inference
+            CohereProvider(),        # FREE - Good for general tasks
+            OpenRouterProvider(),    # FREE models available
+            AnthropicProvider(),     # Paid - Strong reasoning
+            OpenAIProvider(),        # Paid - Fallback
         ]
     
     def generate_response(self, prompt: str) -> Dict[str, Any]:
