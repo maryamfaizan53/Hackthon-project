@@ -48,11 +48,21 @@ def verify_token(token: str, credentials_exception):
 
 # Password hashing utilities
 from passlib.context import CryptContext
+import hashlib
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+def _pre_hash(password: str) -> str:
+    """
+    Bcrypt has a limit of 72 bytes. To support longer passwords,
+    we pre-hash the password using SHA256 before passing it to bcrypt.
+    """
+    return hashlib.sha256(password.encode("utf-8")).hexdigest()
+
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    # Use pre-hashing to handle long passwords
+    return pwd_context.hash(_pre_hash(password))
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    # Use pre-hashing to match the stored hash
+    return pwd_context.verify(_pre_hash(plain_password), hashed_password)

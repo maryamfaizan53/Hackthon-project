@@ -3,9 +3,12 @@ fastapi
 uvicorn[standard]
 python-jose[cryptography]
 passlib[bcrypt]
+bcrypt==4.0.1
 python-multipart
 psycopg2-binary
 openai
+anthropic
+groq
 requests
 qdrant-client
 python-dotenv
@@ -13,4 +16,3 @@ pydantic>=2.0
 pydantic-settings
 google-generativeai
 email-validator
-
