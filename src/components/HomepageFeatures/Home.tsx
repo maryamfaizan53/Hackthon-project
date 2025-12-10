@@ -97,7 +97,8 @@ export default function MainHome() {
       {/* Popup Message */}
       {showPopup && !isOpen && (
         <div className="chatkit-popup-message">
-          How can I help you? 💬
+          <div className="chatkit-popup-icon">⚡</div>
+          <div className="chatkit-popup-text">How can I help you?</div>
           <button
             onClick={(e) => {
               e.stopPropagation();
