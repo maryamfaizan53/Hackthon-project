@@ -242,34 +242,16 @@ const AuthButton: React.FC = () => {
           )}
         </div>
       ) : (
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
+        <div className="AuthButton-container">
           <Link
-            className="button button--primary"
+            className="AuthButton-btn AuthButton-login"
             to="/login"
-            style={{
-              padding: '6px 16px',
-              fontSize: '14px',
-              fontWeight: 500,
-              borderRadius: '6px',
-              textDecoration: 'none'
-            }}
           >
             Login
           </Link>
           <Link
-            className="button button--secondary"
+            className="AuthButton-btn AuthButton-signup"
             to="/signup"
-            style={{
-              padding: '6px 16px',
-              fontSize: '14px',
-              fontWeight: 500,
-              borderRadius: '6px',
-              textDecoration: 'none'
-            }}
           >
             Sign Up
           </Link>

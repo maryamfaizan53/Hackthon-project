@@ -70,7 +70,7 @@
 
 .titleRed {
   color: #6366f1;
-  text-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+  /* text-shadow removed */
 }
 
 .heroSubtitle {

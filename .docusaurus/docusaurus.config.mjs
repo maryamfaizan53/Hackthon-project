@@ -53,11 +53,19 @@ export default {
     "localeConfigs": {}
   },
   "clientModules": [
+<<<<<<< Updated upstream
     "D:\\github\\Hackthon-project\\src\\components\\Root.tsx"
   ],
   "customFields": {
     "geminiApiKey": "AIzaSyB-Y-eM-hDHw4_jbG9QEpVMs6drXpxgM7c",
     "backendApiUrl": "http://localhost:8000"
+=======
+    "C:\\Users\\840 G7\\Documents\\GitHub\\Hackthon-project\\src\\components\\Root.tsx"
+  ],
+  "customFields": {
+    "geminiApiKey": "AIzaSyDwEGLlV89P7bDAEC60CDx0Y2bKMGSFYdU",
+    "backendApiUrl": "https://hackthon-project-production.up.railway.app/"
+>>>>>>> Stashed changes
   },
   "presets": [
     [
@@ -70,8 +78,13 @@ export default {
         "blog": false,
         "theme": {
           "customCss": [
+<<<<<<< Updated upstream
             "D:\\github\\Hackthon-project\\src\\css\\custom.css",
             "D:\\github\\Hackthon-project\\src\\css\\sidebar-custom.css"
+=======
+            "C:\\Users\\840 G7\\Documents\\GitHub\\Hackthon-project\\src\\css\\custom.css",
+            "C:\\Users\\840 G7\\Documents\\GitHub\\Hackthon-project\\src\\css\\sidebar-custom.css"
+>>>>>>> Stashed changes
           ]
         }
       }
