@@ -339,10 +339,10 @@
   }
 }
 
-/* Popup Message - Glassmorphism */
+/* Popup Message - Positioned Above FAB */
 .chatkit-popup-message {
   position: fixed;
-  bottom: 100px;
+  bottom: 95px;
   right: 24px;
   background: rgba(15, 23, 42, 0.9);
   backdrop-filter: blur(16px);
