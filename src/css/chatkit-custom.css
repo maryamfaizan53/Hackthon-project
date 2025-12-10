@@ -449,26 +449,7 @@
 
 
 
-.chatkit-popup-close-button {
-  background: none;
-  border: none;
-  color: #cbd5e1;
-  font-size: 24px;
-  cursor: pointer;
-  transition: color 0.2s;
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-}
 
-.chatkit-popup-close-button:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-}
 
 /* Header Close Button */
 .chatkit-close-button {
