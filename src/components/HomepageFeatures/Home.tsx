@@ -64,9 +64,52 @@ export default function MainHome() {
 
   return (
     <>
-      {/* Floating Chat Button */}
-      <div onClick={toggleChat} className="chatkit-toggle-button">
-        {isOpen ? (
+      {/* Unified Chat Trigger - Pill Design */}
+      {!isOpen && (
+        <div
+          className={`chatkit-unified-trigger ${showPopup ? 'extended' : ''}`}
+          onClick={toggleChat}
+        >
+          <div className="chatkit-trigger-icon-wrapper">
+            <svg
+              className="chatkit-fab-icon"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+
+          {showPopup && (
+            <>
+              <div className="chatkit-trigger-text">How can I help you?</div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowPopup(false);
+                }}
+                className="chatkit-trigger-close-button"
+              >
+                ×
+              </button>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* Minimized Toggle Button (Only shown when popup closed but chat closed) */}
+      {!showPopup && !isOpen && (
+        /* This state is covered by the unified trigger in non-extended mode */
+        null
+      )}
+
+      {/* Close Button when Chat is Open */}
+      {isOpen && (
+        <div onClick={toggleChat} className="chatkit-toggle-button close-mode">
           <svg
             className="chatkit-fab-icon"
             width="24"
@@ -79,35 +122,6 @@ export default function MainHome() {
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
-        ) : (
-          <svg
-            className="chatkit-fab-icon"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-        )}
-      </div>
-
-      {/* Popup Message */}
-      {showPopup && !isOpen && (
-        <div className="chatkit-popup-message">
-          <div className="chatkit-popup-icon">⚡</div>
-          <div className="chatkit-popup-text">How can I help you?</div>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowPopup(false);
-            }}
-            className="chatkit-popup-close-button"
-          >
-            ×
-          </button>
         </div>
       )}
 
