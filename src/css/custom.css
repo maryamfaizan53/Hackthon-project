@@ -186,7 +186,6 @@ form button[type="submit"]:hover {
     0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
-<<<<<<< Updated upstream
 form button[type="submit"]:active {
   transform: translateY(0);
 }
