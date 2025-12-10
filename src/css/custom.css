@@ -73,20 +73,8 @@ body {
   min-height: 100vh;
 }
 
-<<<<<<< Updated upstream
 /* Sophisticated Glow Animation */
 @keyframes sophisticatedGlow {
-=======
-/* Neon Glow Animation */
-@keyframes neonGlow {
-  0%, 100% {
-    /* text-shadow removed */
-  }
-  50% {
-    /* text-shadow removed */
-  }
-}
->>>>>>> Stashed changes
 
   0%,
   100% {
@@ -103,13 +91,6 @@ body {
 }
 
 /* Premium Headings with Gradient */
-.theme-doc-markdown h1,
-.theme-doc-markdown h2,
-.theme-doc-markdown h3,
-.theme-doc-markdown h4,
-.theme-doc-markdown h5,
-.theme-doc-markdown h6,
-<<<<<<< Updated upstream
 h1,
 h2,
 h3,
@@ -122,28 +103,11 @@ h6 {
   background-clip: text;
   font-weight: 700 !important;
   letter-spacing: -0.02em;
-=======
-h1, h2, h3, h4, h5, h6 {
-  color: var(--neon-blue) !important;
-  font-weight: 800 !important;
-  /* text-shadow removed */
-  letter-spacing: 0.05em;
->>>>>>> Stashed changes
   position: relative;
   filter: drop-shadow(0 2px 8px rgba(14, 165, 233, 0.3));
 }
 
-<<<<<<< Updated upstream
 /* H1 Elegant Underline */
-=======
-/* Enhanced glow for main headings (h1) */
-.theme-doc-markdown h1,
-h1 {
-  /* text-shadow removed */
-}
-
-/* Neon Underline Effect for H1 */
->>>>>>> Stashed changes
 h1::after,
 .theme-doc-markdown h1::after {
   content: '';
@@ -228,137 +192,6 @@ form button[type="submit"]:active {
 }
 
 /* Premium Navbar - Glassmorphism */
-=======
-/* AuthButton Styling */
-/* AuthButton Styling */
-.AuthButton-container {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.AuthButton-btn {
-  padding: 8px 20px;
-  border-radius: 6px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  text-decoration: none !important;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid transparent;
-}
-
-/* Login - Primary (Filled) */
-.AuthButton-login {
-  background: var(--neon-blue);
-  color: #000000 !important;
-  border-color: var(--neon-blue);
-}
-
-.AuthButton-login:hover {
-  background: #33e2ff; /* lighter blue */
-  border-color: #33e2ff;
-  box-shadow: 0 4px 12px rgba(0, 217, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Signup - Secondary (Outline) */
-.AuthButton-signup {
-  background: transparent;
-  color: var(--text-white) !important;
-  border-color: rgba(0, 217, 255, 0.5);
-}
-
-.AuthButton-signup:hover {
-  border-color: var(--neon-blue);
-  background: rgba(0, 217, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 217, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-/* PersonalizeButton and EditPageButton Styling */
-.ContentWrapper-buttons {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 25px;
-}
-
-.ContentWrapper-buttons button {
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: 2px solid rgba(0, 217, 255, 0.4);
-  background: rgba(20, 20, 20, 0.9);
-  color: var(--text-white);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.ContentWrapper-buttons button:hover {
-  background: rgba(0, 217, 255, 0.15);
-  border-color: var(--neon-blue);
-  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
-  transform: translateY(-2px);
-}
-
-/* FOOTER - Professional Dark with Neon Accents */
-
-/* Light mode footer */
-[data-theme='light'] footer.footer--dark {
-  --ifm-footer-background-color: #f9fafb !important;
-  background-color: #f9fafb !important;
-  border-top: 1px solid #e5e7eb;
-}
-
-[data-theme='light'] footer.footer--dark .footer__copyright,
-[data-theme='light'] footer.footer--dark .footer__link-item {
-  color: #6b7280 !important;
-}
-
-/* Dark mode footer - Pure black with neon blue accents */
-[data-theme='dark'] footer.footer--dark {
-  --ifm-footer-background-color: #000000 !important;
-  background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%) !important;
-  border-top: 2px solid var(--neon-blue);
-  box-shadow: 0 -5px 30px rgba(0, 217, 255, 0.3);
-}
-
-[data-theme='dark'] footer.footer--dark .footer__title {
-  color: var(--neon-blue) !important;
-  font-weight: 700;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-[data-theme='dark'] footer.footer--dark .footer__copyright,
-[data-theme='dark'] footer.footer--dark .footer__link-item {
-  color: #e5e5e5 !important;
-}
-
-[data-theme='dark'] footer.footer--dark .footer__link-item:hover {
-  color: var(--neon-blue) !important;
-  color: var(--neon-blue) !important;
-}
-
-/* Footer padding adjustment */
-footer.footer {
-  padding: 3rem 0 !important;
-}
-
-footer.footer .container {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-/* Navbar Enhancement */
->>>>>>> Stashed changes
 .navbar {
   background: rgba(12, 10, 9, 0.8) !important;
   backdrop-filter: blur(12px) saturate(180%);
@@ -368,18 +201,12 @@ footer.footer .container {
 }
 
 .navbar__title {
-<<<<<<< Updated upstream
   background: linear-gradient(90deg, var(--color-electric-blue), var(--color-violet));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700 !important;
   filter: drop-shadow(0 2px 4px rgba(14, 165, 233, 0.3));
-=======
-  color: var(--neon-blue) !important;
-  font-weight: 800 !important;
-  font-weight: 800 !important;
->>>>>>> Stashed changes
 }
 
 .navbar__link {
@@ -389,12 +216,7 @@ footer.footer .container {
 }
 
 .navbar__link:hover {
-<<<<<<< Updated upstream
   color: var(--color-electric-blue) !important;
-=======
-  color: var(--neon-blue) !important;
-  color: var(--neon-blue) !important;
->>>>>>> Stashed changes
 }
 
 /* Professional Sidebar */
@@ -419,16 +241,10 @@ footer.footer .container {
 }
 
 .menu__link--active {
-<<<<<<< Updated upstream
   background: linear-gradient(90deg, rgba(14, 165, 233, 0.15), transparent) !important;
   color: var(--color-electric-blue) !important;
   border-left: 3px solid var(--color-electric-blue);
   padding-left: 9px;
-=======
-  color: var(--neon-blue) !important;
-  background: rgba(0, 217, 255, 0.1) !important;
-  background: rgba(0, 217, 255, 0.1) !important;
->>>>>>> Stashed changes
 }
 
 /* Code Blocks - Professional Styling */
@@ -455,12 +271,7 @@ a {
 }
 
 a:hover {
-<<<<<<< Updated upstream
   color: var(--color-violet);
-=======
-  color: var(--neon-blue);
-  color: var(--neon-blue);
->>>>>>> Stashed changes
   text-decoration: underline;
   text-decoration-color: rgba(139, 92, 246, 0.4);
 }
